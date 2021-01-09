@@ -2,10 +2,10 @@
 
 one:
   author: one
-  title: 
-  text: 
+  title: MyString
+  text: MyText
 
 two:
   author: two
-  title: 
-  text: 
+  title: MyString
+  text: MyText
