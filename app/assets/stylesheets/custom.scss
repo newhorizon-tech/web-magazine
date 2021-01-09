@@ -1,0 +1,15 @@
+$base-color: #847f7b;
+$primary-color: #f76108;
+
+nav {
+    background-color: white;
+}
+
+
+.navbar-light .navbar-nav .nav-link{
+  color: $base-color;
+}
+
+.navbar-light .navbar-nav .nav-link:hover{
+  color: $primary-color;
+}

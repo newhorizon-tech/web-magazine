@@ -2,14 +2,14 @@ class UsersController < ApplicationController
     def new
      @user = User.new
     end
-    
+
     def create
       @user = User.new(user_params)
       if @user.valid?
         @user.save
-        flash.alert = "Your account has been created, #{@user.username}"
+        flash.alert = "Your account has been created, #{@user.name}"
       else
-        @user = User.find_by(username: @user.name)
+        @user = User.find_by(name: @user.name)
         flash.alert = "Welcome Back, #{@user.name}!"
       end
       session[:user_id] = @user.id
@@ -26,6 +26,6 @@ class UsersController < ApplicationController
 
     private
     def user_params
-      params.require(:user).permit(:name)
+      params.permit(:name)
     end
 end

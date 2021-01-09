@@ -1,0 +1,5 @@
+<%= form_with url:users_path do |f| %>
+  <%= f.label :name, 'Enter your username' %>
+  <%= f.text_field :name %>
+  <%= f.submit 'Login'%>
+<% end %>

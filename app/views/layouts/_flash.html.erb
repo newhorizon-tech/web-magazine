@@ -1,0 +1,11 @@
+<%  unless flash.empty? %>
+<div class="jumbotron">
+  <div class="lead">
+    <% flash.each do |type, msg| %>
+      <div>
+        <%= msg %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<% end %>
