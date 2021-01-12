@@ -1,16 +1,20 @@
 class UsersController < ApplicationController
+    # Hybrid cntroller that handles temporary user sessions
     def new
      @user = User.new
     end
 
+    # Check if a user exists
+    # If user exists, log in; if user does not exist, create a new user
     def create
       @user = User.new(user_params)
+      @user.name = @user.name.strip
       if @user.valid?
         @user.save
         flash.alert = "Your account has been created, #{@user.name}"
       else
         @user = User.find_by(name: @user.name)
-        flash.alert = "Welcome Back, #{@user.name}!"
+        flash.alert = "Welcome back, #{@user.name}!"
       end
       session[:user_id] = @user.id
       session[:name] = @user.name
