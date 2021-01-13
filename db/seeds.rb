@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 u1 = User.create(name: 'User One')
-u1 = User.create(name: 'User Two')
-c1 = Category.create(name: 'Category One')
-a1 = Article.create(title: 'Article One', category: c1)
-a2 = Article.create(title: 'Article One', category: c1)
+u2 = User.create(name: 'User Two')
+c1 = Category.create(name: 'Category One', priority: 1)
+a1 = Article.create(title: 'Article One', author: u1)
+# a2 = Article.create(title: 'Article Two', category: c1)
