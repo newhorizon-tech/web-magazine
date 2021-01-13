@@ -1,4 +1,8 @@
 <% @category_articles.each do |article| %>
+<div class="card">
+  <p> <%= article.votes.count %> </p>
   <p> <%= article.title%> </p>
   <p> <%= article.author.name %> </p>
+  <%= button_to 'Like', upvote_article_path, class: 'btn btn-custom' %>
+  </div>
 <% end %>

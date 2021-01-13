@@ -7,4 +7,6 @@ class CategoriesController < ApplicationController
     @category_articles = @category.articles
   end
 
+  
+
 end
