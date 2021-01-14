@@ -4,4 +4,7 @@ class Article < ApplicationRecord
   has_many :article_categories
   has_many :categories, through: :article_categories
   has_one_attached :image
+
+  scope :most_recent, -> { order("created_at desc").first }
+
 end

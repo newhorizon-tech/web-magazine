@@ -27,13 +27,18 @@ class ArticlesController < ApplicationController
 
   def upvote
     @article = Article.find(params[:id])
-    @vote = Vote.new(user: current_user, article: @article)
-    if @vote.save
-      flash.alert = 'You have succesfully upvoted the article'
+    if @article.author.id == current_user.id
+      flash.alert = "You can't upvote your own article!"
+      redirect_back(fallback_location: root_path)
     else
-      flash.alert = "You can't upvote the article twice!"
+      @vote = Vote.new(user: current_user, article: @article)
+      if @vote.save
+        flash.alert = 'You have succesfully upvoted the article'
+      else
+        flash.alert = "You can't upvote the article twice!"
+      end
+      redirect_back(fallback_location: root_path)
     end
-    redirect_back(fallback_location: root_path)
   end
 
   private

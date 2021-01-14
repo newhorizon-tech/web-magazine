@@ -1,10 +1,25 @@
-<h1> Lets Go! </h1>
-<div class="card">
-<h2>Top Article!</h2>
-<%= @top_article.title %>
-<%= @top_article.votes.count %>
-<%= image_path url_for(@top_article.image) %>
-</div>
-<% @categories.each do |category| %>
-  <p> <%= link_to category.name, category %> </p>
+<!-- display_article? and latest_article are CategoryHelper methods -->
+
+
+<% if display_article?(@top_article) %>
+ <div class="top-article">
+    <h2>Top Article!</h2>
+    <%= @top_article.title %>
+    <%= @top_article.votes.count %>
+    <%= image_tag url_for(@top_article.image), size: '640x360' %>
+  </div>
 <% end %>
+
+<div class="category-container container">
+  <div class="row"></div>
+<% @categories.each do |category| %>
+      <div class="category col-3">
+      <%= link_to category.name, category %> </p>
+      <% article = latest_article(category) %>
+      <% if display_article?(article) %>
+        <%= article.title %>
+        <%= image_tag url_for(article.image), size: '640x360' %>
+      <% end %>
+      </div>
+<% end %>
+</div>
