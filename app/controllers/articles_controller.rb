@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.all
   end
-  
+
   def new
     @article = Article.new
     @categories_list = Category.all
@@ -12,11 +12,17 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @id_list = params[:article][:category_ids].reject(&:blank?)
     if @article.save
+      @id_list.each do |category_id|
+        category_id = category_id.to_i
+        ArticleCategory.create!(article: @article, category_id: category_id)
+      end
       flash.alert = 'You have succesfully created the article!'
     else
       flash.alert = @article.errors.full_messages
     end
+    redirect_to root_path
   end
 
   def upvote

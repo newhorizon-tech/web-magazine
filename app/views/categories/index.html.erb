@@ -1,5 +1,10 @@
 <h1> Lets Go! </h1>
-
+<div class="card">
+<h2>Top Article!</h2>
+<%= @top_article.title %>
+<%= @top_article.votes.count %>
+<%= image_path url_for(@top_article.image) %>
+</div>
 <% @categories.each do |category| %>
   <p> <%= link_to category.name, category %> </p>
 <% end %>
