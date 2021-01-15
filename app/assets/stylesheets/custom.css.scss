@@ -24,15 +24,14 @@ nav {
   color: white;
 }
 
-.category{
-}
-
-.top-article {
-}
-
 .card {
   border: none;
   .card-img-overlay{
     background-color: rgba(0, 0, 0, 0.5);
   }
+}
+
+.btn-custom {
+  border: 1px solid $base-color;
+  color: $base-color;
 }
