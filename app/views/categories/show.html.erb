@@ -3,6 +3,7 @@
   <p> <%= article.votes.count %> </p>
   <p> <%= article.title%> </p>
   <p> <%= article.author.name %> </p>
+  <p> <%= time_ago_in_words article.created_at %> ago </p>
   <%= button_to 'Like', upvote_article_path(article.id), class: 'btn btn-custom' %>
   </div>
 <% end %>

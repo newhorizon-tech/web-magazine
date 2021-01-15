@@ -1,25 +1,29 @@
 <!-- display_article? and latest_article are CategoryHelper methods -->
 
-
 <% if display_article?(@top_article) %>
- <div class="top-article">
-    <h2>Top Article!</h2>
-    <%= @top_article.title %>
-    <%= @top_article.votes.count %>
-    <%= image_tag url_for(@top_article.image), size: '640x360' %>
+  <div class="top-article card rounded-0 bg-dark text-white">
+    <%= image_tag @top_article.image, size: '50%', class:'card-img rounded-0' %>
+    <div class="card-img-overlay rounded-0">
+      <h5 class="card-title"> <%= @top_article.title %> </h5>
+      <p class="card-text"><%= truncate(@top_article.text) %></p>
+    </div>
   </div>
 <% end %>
 
-<div class="category-container container">
-  <div class="row"></div>
-<% @categories.each do |category| %>
-      <div class="category col-3">
-      <%= link_to category.name, category %> </p>
+<div class="category-container">
+  <div class="card-group">
+    <% @categories.each do |category| %>
       <% article = latest_article(category) %>
-      <% if display_article?(article) %>
-        <%= article.title %>
-        <%= image_tag url_for(article.image), size: '640x360' %>
-      <% end %>
-      </div>
-<% end %>
+        <% if display_article?(article) %>
+            <div class="category card rounded-0 bg-dark text-white">
+              <%= image_tag article.image, class: 'card-img rounded-0' %>
+              <div class="card-img-overlay rounded-0">
+                <h5 class="card-title"> <%= link_to category.name, category %></h5>
+                <p class="card-text"><%= article.title %></p>
+                <p class="card-text"><%= truncate(article.text) %></p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+  </div>
 </div>
