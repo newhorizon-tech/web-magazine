@@ -13,6 +13,9 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @id_list = params[:article][:category_ids].reject(&:blank?)
+    no_category = @id_list.empty?
+    puts "@id_list is #{@id_list}"
+    puts "@id_list is #{@no_category}"
     if @article.save
       @id_list.each do |category_id|
         category_id = category_id.to_i
@@ -40,6 +43,16 @@ class ArticlesController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
   end
+
+  def random
+    @article = Article.all.sample
+    redirect_to article_path(@article)
+  end
+
+  def show
+    @article = Article.find(params[:id])
+  end
+
 
   private
   def article_params

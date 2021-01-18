@@ -3,27 +3,24 @@
 <div class="main-grid">
 <% if display_article?(@top_article) %>
   <div class="top-article">
-  <div class="card rounded-0 bg-dark text-white"
-       style="background: url('<%= @top_article.image.service_url %>')">
+  <div class="card rounded-0 text-white"
+       style="background: rgba(0, 0, 0, 0.8) top center no-repeat url('<%= @top_article.image.service_url %>')">
       <h5 class="card-title"> <%= @top_article.title %> </h5>
-      <p class="card-text"><%= truncate(@top_article.text) %></p>
+      <p class="card-text"><%= truncate(@top_article.text,length: 100) %></p>
   </div>
   </div>
 <% end %>
 
 <div class="category-container">
-  <div class="card-group">
     <% @categories.each do |category| %>
       <% article = latest_article(category) %>
         <% if display_article?(article) %>
-            <div class="category card rounded-0 bg-dark text-white "
-                 style="background-image: url('<%= article.image.service_url%>')">
+            <div class="category col-3 rounded-0 text-white "
+                 style="background: rgba(0, 0, 0, 0.8) center center no-repeat url('<%= article.image.service_url%>')">
                 <h5 class="card-title"> <%= link_to category.name, category %></h5>
                 <p class="card-text"><%= article.title %></p>
-                <p class="card-text"><%= truncate(article.text) %></p>
               </div>
           <% end %>
         <% end %>
-      </div>
   </div>
 </div>
