@@ -1,4 +1,6 @@
-<h1> New Article </h1>
+<div class="container mt-2">
+<div class="card p-2">
+<h1 class="card-title"> New Article </h1>
 <%= form_with model: @article, class: 'form' do |form| %>
   <%= form.label :title, 'Title', class: 'form-label' %>
   <%= form.text_field :title, class: 'form-control' %>
@@ -6,7 +8,14 @@
   <%= form.text_area :text, size: "60x10", class: 'form-control' %>
   <%= form.label :image, 'Image', class: 'form-label' %>
   <%= form.file_field :image, direct_upload: true, class: 'form-control' %>
-  <%= form.label :category, 'Category', class: 'form-label' %>
-  <%= form.collection_check_boxes(:category_ids, Category.all, :id, :name, multiple: true, prompt: 'Select Categories') %>
-  <%= form.submit %>
+  <div class="form-control p-4 mt-2 mb-2">
+  <%= form.label :category, 'Categories: ', class: 'form-label' %>
+  <%= form.collection_check_boxes(:category_ids, @categories_list, :id, :name, multiple: true, prompt: 'Select Categories') do |box| %>
+      <%= box.check_box(class: "btn-check") %>
+      <%= box.label(class: "btn btn-outline-secondary") %>
+  <% end %>
+  </div>
+  <%= form.submit class: 'btn btn-secondary form-control'%>
 <% end %>
+</div>
+</div>

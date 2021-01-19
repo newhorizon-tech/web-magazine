@@ -1,2 +1,9 @@
-<%= @article.title %>
-<%= image_tag @article.image.service_url %>
+<div class="container">
+
+<h2 class="article-title"><%= @article.title %></h2>
+<p class= "article-text"><%= @article.author.name %></p>
+
+<%= image_tag @article.image.service_url, class: "article-img col-6 justify-content-center" %>
+<p class="article-text"><%= @article.text %></p>
+
+</div>

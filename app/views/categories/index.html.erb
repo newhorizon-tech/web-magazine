@@ -4,8 +4,8 @@
 <% if display_article?(@top_article) %>
   <div class="top-article">
   <div class="card rounded-0 text-white"
-       style="background: rgba(0, 0, 0, 0.8) top center no-repeat url('<%= @top_article.image.service_url %>')">
-      <h5 class="card-title"> <%= @top_article.title %> </h5>
+       style="background: top center no-repeat url('<%= @top_article.image.service_url %>')">
+      <h5 class="card-title"> <%= link_to @top_article.title, @top_article %> </h5>
       <p class="card-text"><%= truncate(@top_article.text,length: 100) %></p>
   </div>
   </div>
@@ -16,7 +16,7 @@
       <% article = latest_article(category) %>
         <% if display_article?(article) %>
             <div class="category col-3 rounded-0 text-white "
-                 style="background: rgba(0, 0, 0, 0.8) center center no-repeat url('<%= article.image.service_url%>')">
+                 style="background: center center no-repeat url('<%= article.image.service_url%>')">
                 <h5 class="card-title"> <%= link_to category.name, category %></h5>
                 <p class="card-text"><%= article.title %></p>
               </div>

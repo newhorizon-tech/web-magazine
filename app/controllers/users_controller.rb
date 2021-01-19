@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    # Hybrid cntroller that handles temporary user sessions
+    # Hybrid controller that handles temporary user sessions
     def new
      @user = User.new
     end

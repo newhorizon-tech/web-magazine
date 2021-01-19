@@ -1,11 +1,27 @@
-<% @category_articles.each do |article| %>
-<div class="card">
-  <p> <%= article.votes.count %> </p>
-  <p> <%= article.title%> </p>
-  <p> <%= article.author.name %> </p>
-  <p> <%= time_ago_in_words article.created_at %> ago </p>
-  <%= button_to  upvote_article_path(article.id), class: 'btn btn-custom' do %>
-   Like <i class="bi bi-hand-thumbs-up-fill"></i>
-  <% end %>
+<div class="articles-group card-group container">
+  <% @category_articles.each do |article| %>
+    <div class="article card">
+      <%= image_tag article.image.service_url, class: 'card-img-top vh-50' %>
+      <div class="card-body vh-50">
+        <h5 class="card-title"><%= link_to article.title, article %></h5>
+        <p class="text-muted">
+          <%= article.author.name %>
+        </p>
+        <p class="card-text"><%= truncate(article.text,length: 120, separator: ' ') { link_to "Read More", article } %></p>
+        <div class="likes d-flex align-items-center">
+          <span>
+            <%= button_to upvote_article_path(article.id), class: 'btn btn-custom' do %>
+            <i class="bi bi-hand-thumbs-up-fill"></i>
+            Like
+          <% end %>
+        </span>
+      </div>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted"><%= time_ago_in_words article.created_at %>
+        ago
+      </small>
+    </div>
   </div>
 <% end %>
+</div>

@@ -1,5 +1,9 @@
+<div class="container">
+  <div class="card p-4 mt-3">
 <%= form_with url:users_path do |f| %>
   <%= f.label :name, 'Enter your username' %>
   <%= f.text_field :name %>
-  <%= f.submit 'Login'%>
+  <%= f.submit 'Login', class:'btn btn-secondary' %>
 <% end %>
+</div>
+</div>
