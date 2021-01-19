@@ -13,6 +13,12 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @id_list = params[:article][:category_ids].reject(&:blank?)
+    unless @article.image.attached
+      imagepath = File.join(Rails.root, view_context.asset_path("default.png"))
+      @article.image.attach(io: File.open(imagepath),
+                            filename: "default.png",
+                            content_type: "image/png")
+    end
     if @article.save
       if @id_list.empty?
          @misc_category = Category.find_by(priority: 0)
