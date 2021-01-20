@@ -12,28 +12,18 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    @id_list = params[:article][:category_ids].reject(&:blank?)
-    unless @article.image.attached
-      imagepath = File.join(Rails.root, view_context.asset_path("default.png"))
-      @article.image.attach(io: File.open(imagepath),
-                            filename: "default.png",
-                            content_type: "image/png")
-    end
+    @cat_list = params[:article][:category_ids].reject(&:blank?)
     if @article.save
-      if @id_list.empty?
-         @misc_category = Category.find_by(priority: 0)
-         ArticleCategory.create!(article: @article, category: @misc_category)
-      else
-        @id_list.each do |category_id|
-          category_id = category_id.to_i
-          ArticleCategory.create!(article: @article, category_id: category_id)
+      unless @cat_list.empty?
+        @cat_list.each do |cat_id|
+          ArticleCategory.create!(article: @article, category_id: cat_id.to_i)
         end
       end
       flash.alert = 'You have succesfully created the article!'
     else
-      flash.alert = @article.errors.full_messages
+      flash.notice = @article.errors.full_messages.to_sentence
     end
-    redirect_to root_path
+    redirect_back(fallback_location: root_path)
   end
 
   def upvote
@@ -64,6 +54,6 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title,:text,:image).merge(author_id: current_user.id)
+    params.require(:article).permit(:title,:text,:image,:category_ids => []).merge(author_id: current_user.id)
   end
 end
