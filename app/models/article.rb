@@ -11,10 +11,6 @@ class Article < ApplicationRecord
   validates :category_ids,  presence: { message: "At least one category must be selected" }
 
 
-  # validate :atleast_one_is_checked
-  # validates_length_of :category_ids, minimum: 1, message: "You must select at least 1 category"
-
-
   scope :most_recent, -> { order("created_at desc").first }
 
 end
