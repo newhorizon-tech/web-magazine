@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :redirect_if_not_logged_in, only: [:new, :upvote]
+  before_action :redirect_if_not_logged_in, only: %i[new upvote]
 
   def index
     @articles = Article.all
@@ -30,16 +30,15 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     if @article.author.id == current_user.id
       flash.alert = "You can't like your own article!"
-      redirect_back(fallback_location: root_path)
     else
       @vote = Vote.new(user: current_user, article: @article)
-      if @vote.save
-        flash.alert = 'You have succesfully liked the article'
-      else
-        flash.alert = "You can't like the same article twice!"
-      end
-      redirect_back(fallback_location: root_path)
+      flash.alert = if @vote.save
+                      'You have succesfully liked the article'
+                    else
+                      "You can't like the same article twice!"
+                    end
     end
+    redirect_back(fallback_location: root_path)
   end
 
   def random
@@ -51,9 +50,9 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-
   private
+
   def article_params
-    params.require(:article).permit(:title,:text,:image,:category_ids => []).merge(author_id: current_user.id)
+    params.require(:article).permit(:title, :text, :image, category_ids: []).merge(author_id: current_user.id)
   end
 end

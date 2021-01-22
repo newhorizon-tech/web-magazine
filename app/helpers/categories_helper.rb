@@ -4,6 +4,6 @@ module CategoriesHelper
   end
 
   def display_article?(top_article)
-    !(top_article.blank?)
+    !top_article.blank?
   end
 end

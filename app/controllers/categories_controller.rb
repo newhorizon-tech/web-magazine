@@ -8,7 +8,4 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     @category_articles = @category.articles.with_attached_image.includes(:author).order(created_at: :desc)
   end
-
-
-
 end

@@ -6,11 +6,9 @@ class Article < ApplicationRecord
   has_one_attached :image
 
   validates :image, presence: true
-  validates :title, presence: true, length: { in: 3..100}
+  validates :title, presence: true, length: { in: 3..100 }
 
-  validates :category_ids,  presence: { message: "At least one category must be selected" }
+  validates :category_ids, presence: { message: 'At least one category must be selected' }
 
-
-  scope :most_recent, -> { order("created_at desc").first }
-
+  scope :most_recent, -> { order('created_at desc').first }
 end
