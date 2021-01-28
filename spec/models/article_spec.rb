@@ -3,11 +3,13 @@
 require 'rails_helper'
 
 RSpec.describe Article, :type => :model do
+  before(:all)
+   test_user_1 = User.create_or_find_by(name: 'Test')
+   image =
+  end
 
-  let!(:test_user){User.create(name: 'Test')}
-  
   it "is not valid without an author" do
-    article = Article.new(author: nil, title: nil,)
+    article = Article.new(author: nil, title: 'Title', category_ids:)
     expect(article).to_not be_valid
   end
 
