@@ -14,11 +14,6 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @cat_list = params[:article][:category_ids].reject(&:blank?)
     if @article.save
-      unless @cat_list.empty?
-        @cat_list.each do |cat_id|
-          ArticleCategory.create!(article: @article, category_id: cat_id.to_i)
-        end
-      end
       flash.alert = 'You have succesfully created the article!'
     else
       flash.notice = @article.errors.full_messages.to_sentence
