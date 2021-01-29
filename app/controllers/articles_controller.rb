@@ -12,7 +12,6 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    @cat_list = params[:article][:category_ids].reject(&:blank?)
     if @article.save
       flash.alert = 'You have succesfully created the article!'
     else
