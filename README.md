@@ -12,9 +12,9 @@
 
 ### Prerequisites
 
-Ruby: 2.7.2
-Rails: 6.1.1
-Postgres: >=9.5
+- Ruby: 2.7.2
+- Rails: 6.1.1
+- Postgres: >=9.5
 
 ## Live Demo
 
