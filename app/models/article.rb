@@ -11,4 +11,10 @@ class Article < ApplicationRecord
   validates :category_ids, presence: { message: 'At least one category must be selected' }
 
   scope :most_recent, -> { order('created_at desc').first }
+
+  def grab_image
+    downloaded_image = URI.open("https://dummyimage.com/300.png")
+    self.image.attach(io: downloaded_image, filename: '300.png', content_type: 'image/png')
+  end
+
 end

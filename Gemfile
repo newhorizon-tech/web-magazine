@@ -9,6 +9,8 @@ gem 'rails', '~> 6.1.0'
 gem 'pg'
 # Cloudinary
 gem 'cloudinary'
+
+gem 'open-uri'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
