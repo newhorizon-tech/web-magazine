@@ -10,6 +10,8 @@ gem 'pg'
 # Cloudinary
 gem 'cloudinary'
 
+gem 'active_storage_validations'
+
 gem 'open-uri'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'

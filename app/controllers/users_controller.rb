@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.name = @user.name.strip
     if @user.name.blank?
-      flash.alert = "Your name cannot be blank"
+      flash.alert = 'Your name cannot be blank'
       render :new and return
     end
     if @user.valid?
