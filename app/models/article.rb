@@ -13,8 +13,7 @@ class Article < ApplicationRecord
   scope :most_recent, -> { order('created_at desc').first }
 
   def grab_image
-    downloaded_image = URI.open("https://dummyimage.com/300.png")
-    self.image.attach(io: downloaded_image, filename: '300.png', content_type: 'image/png')
+    downloaded_image = URI.open('https://dummyimage.com/300.png')
+    image.attach(io: downloaded_image, filename: '300.png', content_type: 'image/png')
   end
-
 end

@@ -65,18 +65,6 @@ nav {
   }
 }
 
-.articles-group {
-  .card-title a {
-    text-decoration: none;
-    color: $base-color;
-  }
-
-  .card-title a:hover {
-    text-decoration: none;
-    color: $primary-color;
-  }
-}
-
 .article {
   border: 0;
 
@@ -88,27 +76,6 @@ nav {
 
   .card-body {
     height: 43.5vh;
-  }
-}
-
-.category {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  font-weight: bold;
-  text-shadow: 2px 2px 4px #000;
-
-  .card-title a {
-    color: white;
-    text-decoration: none;
-  }
-
-  .card-title a:hover {
-    text-decoration: underline;
-    text-decoration-color: yellow;
-    text-decoration-thickness: 0.2em;
-    text-underline-offset: 2px;
-    text-decoration-skip-ink: none;
   }
 }
 
