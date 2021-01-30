@@ -9,6 +9,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.name = @user.name.strip
+    if @user.name.blank?
+      flash.alert = "Your name cannot be blank"
+      render :new and return
+    end
     if @user.valid?
       @user.save
       flash.alert = "Your account has been created, #{@user.name}"

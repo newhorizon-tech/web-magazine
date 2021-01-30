@@ -11,13 +11,15 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    @categories_list = Category.all.limit(4)
     @article = Article.new(article_params)
     if @article.save
       flash.alert = 'You have succesfully created the article!'
+      redirect_to root_path
     else
       flash.notice = @article.errors.full_messages.to_sentence
+      render :new
     end
-    redirect_back(fallback_location: root_path)
   end
 
   def upvote
