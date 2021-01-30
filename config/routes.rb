@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'logout', to: 'users#destroy', as: :logout
   resources :users, only: [:new, :create]
 
-  resources :articles, only: [:new, :show] do
+  resources :articles, only: [:new, :create, :show] do
     post 'upvote', on: :member
     get 'random', to: 'articles#random', on: :collection
   end

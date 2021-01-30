@@ -5,7 +5,7 @@ class Article < ApplicationRecord
   has_many :categories, through: :article_categories
   has_one_attached :image
 
-  validates :image, attached: true, content_type: { in: [:png, :jpg, :jpeg], message: 'is not a PNG or JPG'}
+  validates :image, attached: true, content_type: { in: %i[png jpg jpeg], message: 'is not a PNG or JPG' }
   validates :title, presence: true, length: { in: 3..100 }
 
   validates :category_ids, presence: { message: 'At least one category must be selected' }
