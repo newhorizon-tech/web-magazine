@@ -1,5 +1,5 @@
 describe "the login process", type: :feature do
-  before :each do
+  before do
     User.create_or_find_by(name: 'my_user_name')
   end
 
@@ -33,6 +33,4 @@ describe "the login process", type: :feature do
     expected_msg = "Welcome back, my_user_name!"
     expect(msg).to have_content expected_msg
   end
-
-
 end
