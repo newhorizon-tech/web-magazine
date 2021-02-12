@@ -1,0 +1,93 @@
+$base-color: #847f7b;
+$primary-color: #f76108;
+$background: #4e443f;
+
+body {
+  background-color: $background;
+}
+
+nav {
+  background-color: white;
+
+  .nav-item {
+    .nav-link {
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: $base-color;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: $primary-color;
+}
+
+.flash {
+  background-color: $base-color;
+  color: white;
+}
+
+.main-grid {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 70% 30%;
+}
+
+.category-container {
+  display: flex;
+  width: 100%;
+}
+
+.card,
+.card-group,
+.category {
+  height: 100%;
+}
+
+.card,
+.category {
+  border: none;
+  background-size: cover !important;
+}
+
+.top-article .card,
+.article .card {
+  font-weight: bold;
+
+  .card-title a {
+    color: $primary-color;
+    text-decoration: none;
+  }
+}
+
+.article {
+  border: 0;
+
+  .card-img-top {
+    width: 100%;
+    height: 43.5vh;
+    object-fit: cover;
+  }
+
+  .card-body {
+    height: 43.5vh;
+  }
+}
+
+.btn-custom {
+  border: 1px solid $base-color;
+  color: $base-color;
+}
+
+.text-muted {
+  font-size: 80%;
+}
+
+footer {
+  bottom: 0;
+}

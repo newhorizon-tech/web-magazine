@@ -1,0 +1,37 @@
+<div class="header">
+<nav class="navbar navbar-expand-sm navbar-light">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <%= link_to 'TechMagazine', root_path, class: 'navbar-brand' %>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav mx-auto order-0 mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to 'Home', root_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Write an Article', new_article_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Random Article', random_articles_path, class: 'nav-link' %>
+        </li>
+      </ul>
+      <div class="d-flex order-3">
+        <ul class="navbar-nav">
+          <% if logged_in? %>
+          <li class="nav-item">
+           <span class="nav-link">  <%= current_user.name %> </span>
+         </li>
+           <li class="nav-item">
+             <%= link_to 'Logout', logout_path, class: 'nav-link' %>
+          </li>
+          <% else %>
+            <%= link_to 'Login', new_user_path, class: 'nav-link' %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+</div>

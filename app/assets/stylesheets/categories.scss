@@ -1,0 +1,28 @@
+// Place all the styles related to the Categories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+$base-color: #847f7b;
+$primary-color: #f76108;
+$background: #4e443f;
+
+.category {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px #000;
+
+  .card-title a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .card-title a:hover {
+    text-decoration: underline;
+    text-decoration-color: yellow;
+    text-decoration-thickness: 0.2em;
+    text-underline-offset: 2px;
+    text-decoration-skip-ink: none;
+  }
+}

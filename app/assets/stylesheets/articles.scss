@@ -1,0 +1,29 @@
+// Place all the styles related to the Articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+$base-color: #847f7b;
+$primary-color: #f76108;
+$background: #4e443f;
+
+.article-title {
+  font-weight: bold;
+  color: white;
+}
+
+.article-text {
+  color: white;
+  font-size: 100%;
+}
+
+.articles-group {
+  .card-title a {
+    text-decoration: none;
+    color: $base-color;
+  }
+
+  .card-title a:hover {
+    text-decoration: none;
+    color: $primary-color;
+  }
+}

@@ -1,0 +1,21 @@
+<div class="container mt-2">
+<div class="card p-2">
+<h1 class="card-title"> New Article </h1>
+<%= form_with model: @article, class: 'form' do |form| %>
+  <%= form.label :title, 'Title', class: 'form-label' %>
+  <%= form.text_field :title, class: 'form-control' %>
+  <%= form.label :text, 'Body', class: 'form-label' %>
+  <%= form.text_area :text, size: "60x10", class: 'form-control' %>
+  <%= form.label :image, 'Image', class: 'form-label', required:true %>
+  <%= form.file_field :image, direct_upload: true, accept: 'image/*', class: 'form-control' %>
+  <div class="form-control p-4 mt-2 mb-2">
+  <%= form.label :category, 'Categories: ', class: 'form-label' %>
+  <%= form.collection_check_boxes(:category_ids, @categories_list, :id, :name, multiple: true, prompt: 'Select Categories') do |box| %>
+      <%= box.check_box(class: "btn-check") %>
+      <%= box.label(class: "btn btn-outline-secondary") %>
+  <% end %>
+  </div>
+  <%= form.submit class: 'btn btn-secondary form-control'%>
+<% end %>
+</div>
+</div>

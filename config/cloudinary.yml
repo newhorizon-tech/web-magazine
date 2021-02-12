@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: stapleimagestore
+  api_key: '932372656213922'
+  api_secret: 6cUVAfCvx6fxrYne9_EQ5uAvuVE
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: stapleimagestore
+  api_key: '932372656213922'
+  api_secret: 6cUVAfCvx6fxrYne9_EQ5uAvuVE
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: stapleimagestore
+  api_key: '932372656213922'
+  api_secret: 6cUVAfCvx6fxrYne9_EQ5uAvuVE
+  enhance_image_tag: true
+  static_file_support: false
